@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "routes": [
+        {
+            "src": "/pkg/(.*)",
+            "dest": "/pkg/main/main.go"
+        }
+    ]
+}
