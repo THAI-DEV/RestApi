@@ -6,7 +6,8 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/kirito41dd/vercel-faas/handler"
+
+	"dechdev/handler"
 )
 
 var (
