@@ -6,12 +6,6 @@
             "destination": "/pkg/main/main.go"
         }
     ],
-    "redirects": [
-        {
-            "source": "/:path*",
-            "destination": "/pkg/main/main.go"
-        }
-    ],
     "build": {
         "env": {
             "GO_BUILD_FLAGS": "-ldflags '-s -w'"
