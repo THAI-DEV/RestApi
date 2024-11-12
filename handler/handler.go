@@ -18,7 +18,7 @@ func Test(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": "Hello, World!",
 		"access":  time.Now().Format("2006-01-02 15:04:05"),
-		"key":     readEnv(),
+		// "key":     readEnv(),
 	})
 }
 
