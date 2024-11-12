@@ -1,4 +1,11 @@
-@baseUrl = http://localhost:8080
+# @baseUrl = http://localhost:8080
+@baseUrl = https://rest-api-jet-iota.vercel.app
 
 ###
 GET {{baseUrl}}/
+
+###
+GET {{baseUrl}}/api/ping
+
+###
+GET {{baseUrl}}/api/test
