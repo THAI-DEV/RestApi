@@ -1,9 +1,20 @@
 {
-    "version": 2,
-    "routes": [
+    "trailingSlash": false,
+    "rewrites": [
         {
-            "src": "/pkg/(.*)",
-            "dest": "/pkg/main/main.go"
+            "source": "/:path*",
+            "destination": "/pkg/main/main.go"
         }
-    ]
+    ],
+    "redirects": [
+        {
+            "source": "/:path*",
+            "destination": "/pkg/main/main.go"
+        }
+    ],
+    "build": {
+        "env": {
+            "GO_BUILD_FLAGS": "-ldflags '-s -w'"
+        }
+    }
 }
