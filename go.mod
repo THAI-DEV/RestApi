@@ -5,7 +5,6 @@ go 1.23.3
 require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/joho/godotenv v1.5.1
-	github.com/kirito41dd/vercel-faas v0.0.0-20240605021025-d24837cd8b74
 )
 
 require (
