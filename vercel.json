@@ -3,7 +3,7 @@
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "/pkg/api/entrypoint.go"
+            "destination": "/api/entrypoint.go"
         }
     ]
 }
