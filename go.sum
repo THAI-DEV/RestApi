@@ -1,3 +1,5 @@
+github.com/THAI-DEV/dechutil v0.0.0-20240922100909-e8757470d553 h1:1jz4og6OA8XdBoVFkVZI13+JlTW5oxKWuxAWEiRbp0k=
+github.com/THAI-DEV/dechutil v0.0.0-20240922100909-e8757470d553/go.mod h1:yIc0sdL3RshyulEOwks7YDAvLndofI6gdr23/RtjSOY=
 github.com/bytedance/sonic v1.12.4 h1:9Csb3c9ZJhfUWeMtpCDCq6BUoH5ogfDFLUgQ/jG+R0k=
 github.com/bytedance/sonic v1.12.4/go.mod h1:B8Gt/XvtZ3Fqj+iSKMypzymZxw/FVwgIGKzMzT9r/rk=
 github.com/bytedance/sonic/loader v0.1.1/go.mod h1:ncP89zfokxS5LZrJxl5z0UJcsk4M4yY2JpfqGeCtNLU=

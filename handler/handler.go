@@ -1,13 +1,12 @@
 package handler
 
 import (
-	"log"
+	"dechdev/config"
 	"net/http"
-	"os"
 	"time"
 
+	"github.com/THAI-DEV/dechutil"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
 func Ping(c *gin.Context) {
@@ -16,21 +15,8 @@ func Ping(c *gin.Context) {
 
 func Test(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"message": "Hello, World!",
+		"message": dechutil.RandomString(8, true, true, true, true),
 		"access":  time.Now().In(time.FixedZone("GMT+7", 7*3600)).Format("2006-01-02 15:04:05"),
-		"key":     readEnv(),
+		"key":     config.Key,
 	})
-}
-
-func readEnv() string {
-	// Load .env file
-	err := godotenv.Load()
-	if err != nil {
-		// log.Fatalf("Error loading .env file")
-		log.Println("Error loading .env file")
-	}
-
-	key := os.Getenv("KEY")
-	return key
-
 }

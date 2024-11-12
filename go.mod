@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/THAI-DEV/dechutil v0.0.0-20240922100909-e8757470d553 // indirect
 	github.com/bytedance/sonic v1.12.4 // indirect
 	github.com/bytedance/sonic/loader v0.2.1 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect

@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"dechdev/config"
 	"dechdev/handler"
 )
 
@@ -17,8 +18,6 @@ var (
 func registerRouter(r *gin.RouterGroup) {
 	r.GET("/api/ping", handler.Ping)
 	r.GET("/api/test", handler.Test)
-	// for nostr NIP-05
-	// r.GET("/.well-known/nostr.json", handler.Cors, handler.NIP05)
 }
 
 // init gin app
@@ -39,6 +38,11 @@ func init() {
 
 	// register route
 	registerRouter(r)
+
+	if config.Mode == "dev" {
+		app.Run(":4000")
+	}
+
 }
 
 // entrypoint
