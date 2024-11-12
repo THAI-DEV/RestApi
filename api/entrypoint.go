@@ -16,8 +16,8 @@ var (
 )
 
 func registerRouter(r *gin.RouterGroup) {
-	r.GET("/api/ping", handler.Ping)
-	r.GET("/api/test", handler.Test)
+	r.GET("/ping", handler.Ping)
+	r.GET("/test", handler.Test)
 }
 
 // init gin app
@@ -34,7 +34,7 @@ func init() {
 		c.String(http.StatusBadRequest, sb.String())
 	})
 
-	r := app.Group("/")
+	r := app.Group("/api")
 
 	// register route
 	registerRouter(r)
