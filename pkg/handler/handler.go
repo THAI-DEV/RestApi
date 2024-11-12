@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"dechdev/config"
+	"dechdev/pkg/config"
 	"net/http"
 	"time"
 

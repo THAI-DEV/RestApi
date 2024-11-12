@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"dechdev/config"
-	"dechdev/handler"
+	"dechdev/pkg/config"
+	"dechdev/pkg/handler"
 )
 
 var (

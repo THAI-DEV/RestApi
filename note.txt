@@ -1,5 +1,5 @@
 DEV
-  go run ./main/main.go
+  go run ./pkg/main/main.go
 
 Prod
  Deploy to Vercel by push code to github

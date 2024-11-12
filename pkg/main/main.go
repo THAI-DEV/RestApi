@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "dechdev/api"
+	_ "dechdev/pkg/api"
 )
 
 func main() {
