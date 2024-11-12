@@ -2,13 +2,12 @@
     "trailingSlash": false,
     "rewrites": [
         {
-            "source": "/:path*",
-            "destination": "/pkg/main/main.go"
+            "source": "/api/(.*)",
+            "destination": "/api/entrypoint.go"
+        },
+        {
+            "source": "/.well-known/nostr.json",
+            "destination": "/api/entrypoint.go"
         }
-    ],
-    "build": {
-        "env": {
-            "GO_BUILD_FLAGS": "-ldflags '-s -w'"
-        }
-    }
+    ]
 }
