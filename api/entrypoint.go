@@ -16,7 +16,7 @@ var (
 func registerRouter(r *gin.RouterGroup) {
 	r.GET("/api/ping", handler.Ping)
 	// for nostr NIP-05
-	r.GET("/.well-known/nostr.json", handler.Cors, handler.NIP05)
+	// r.GET("/.well-known/nostr.json", handler.Cors, handler.NIP05)
 }
 
 // init gin app
