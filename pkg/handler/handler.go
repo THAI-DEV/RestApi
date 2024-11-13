@@ -11,7 +11,8 @@ import (
 
 func Info(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"startDateTime": config.StartDateTime,
+		"buildTime": config.BuildTime,
+		"startTime": config.StartTime,
 	})
 }
 

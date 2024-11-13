@@ -8,7 +8,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var StartDateTime string
+var StartTime string
+var BuildTime string
 var Key string
 var Mode string
 
@@ -24,5 +25,5 @@ func readEnv() {
 
 	Key = os.Getenv("KEY")
 	Mode = os.Getenv("MODE")
-	StartDateTime = util.CurrentDateTimeString()
+	StartTime = util.CurrentDateTimeString()
 }
