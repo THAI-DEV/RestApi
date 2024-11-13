@@ -11,7 +11,7 @@ import (
 
 func Info(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"lastBuild": "2024-11-13 14:41",
+		"startDateTime": config.StartDateTime,
 	})
 }
 
