@@ -18,6 +18,7 @@ var (
 
 func registerRouter(r *gin.RouterGroup) {
 	r.GET("/ping", handler.Ping)
+	r.GET("/info", handler.Info)
 	r.GET("/test", handler.Test)
 }
 

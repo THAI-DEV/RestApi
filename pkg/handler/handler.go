@@ -9,8 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func Info(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"lastBuild": "2024-11-13 14:41",
+	})
+}
+
 func Ping(c *gin.Context) {
-	c.String(http.StatusOK, "pong")
+	c.String(http.StatusOK, "--- pong ---")
 }
 
 func Test(c *gin.Context) {
