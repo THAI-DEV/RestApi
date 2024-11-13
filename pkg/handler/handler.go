@@ -10,7 +10,7 @@ import (
 )
 
 func Ping(c *gin.Context) {
-	c.String(http.StatusOK, "-- pong --")
+	c.String(http.StatusOK, "pong")
 }
 
 func Test(c *gin.Context) {

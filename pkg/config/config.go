@@ -15,11 +15,9 @@ func init() {
 }
 
 func readEnv() {
-	// Load .env file
 	err := godotenv.Load()
 	if err != nil {
-		// log.Fatalf("Error loading .env file")
-		log.Println("Error loading .env file")
+		log.Println("Environment file (.env) not found, so using environment variables as a replacement")
 	}
 
 	Key = os.Getenv("KEY")

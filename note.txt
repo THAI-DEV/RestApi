@@ -2,4 +2,8 @@ DEV
   go run ./pkg/main/main.go
 
 Prod
- Deploy to Vercel by push code to github
+ - Deploy to Vercel by push code to github
+ - run cli 
+    vercel --prod
+
+ https://vercel.com/ruangdech-kurunats-projects

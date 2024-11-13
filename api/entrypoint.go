@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -20,8 +21,11 @@ func registerRouter(r *gin.RouterGroup) {
 	r.GET("/test", handler.Test)
 }
 
-// init gin app
 func init() {
+	fmt.Println("------------------------------------------------")
+	log.Println("--- Start API Server ---")
+	fmt.Println("------------------------------------------------")
+
 	app = gin.New()
 
 	// Handling routing errors
@@ -36,13 +40,11 @@ func init() {
 
 	r := app.Group("/api")
 
-	// register route
 	registerRouter(r)
 
 	if config.Mode == "dev" {
 		app.Run(":4000")
 	}
-
 }
 
 // entrypoint
