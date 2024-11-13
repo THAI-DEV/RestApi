@@ -2,8 +2,8 @@ package handler
 
 import (
 	"dechdev/pkg/config"
+	"dechdev/pkg/util"
 	"net/http"
-	"time"
 
 	"github.com/THAI-DEV/dechutil"
 	"github.com/gin-gonic/gin"
@@ -22,7 +22,7 @@ func Ping(c *gin.Context) {
 func Test(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": dechutil.RandomString(8, true, true, true, true),
-		"access":  time.Now().In(time.FixedZone("GMT+7", 7*3600)).Format("2006-01-02 15:04:05"),
+		"access":  util.CurrentDateTimeString(),
 		"key":     config.Key,
 	})
 }

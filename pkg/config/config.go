@@ -1,9 +1,9 @@
 package config
 
 import (
+	"dechdev/pkg/util"
 	"log"
 	"os"
-	"time"
 
 	"github.com/joho/godotenv"
 )
@@ -24,5 +24,5 @@ func readEnv() {
 
 	Key = os.Getenv("KEY")
 	Mode = os.Getenv("MODE")
-	StartDateTime = time.Now().In(time.FixedZone("GMT+7", 7*3600)).Format("2006-01-02 15:04:05")
+	StartDateTime = util.CurrentDateTimeString()
 }
