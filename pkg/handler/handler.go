@@ -4,6 +4,7 @@ import (
 	"dechdev/pkg/config"
 	"dechdev/pkg/util"
 	"net/http"
+	"strings"
 
 	"github.com/THAI-DEV/dechutil"
 	"github.com/gin-gonic/gin"
@@ -11,7 +12,7 @@ import (
 
 func Info(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"buildTime": config.BuildTime,
+		"buildTime": strings.Replace(config.BuildTime, "_", " ", -1),
 		"startTime": config.StartTime,
 	})
 }
