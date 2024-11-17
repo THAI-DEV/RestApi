@@ -12,8 +12,8 @@ import (
 
 func Info(c *gin.Context) {
 	c.JSON(200, gin.H{
-		"buildTime": strings.Replace(config.BuildTime, "_", " ", -1),
-		"startTime": config.StartTime,
+		"lastDeploy": strings.Replace(config.BuildTime, "_", " ", -1),
+		"lastStart":  config.StartTime,
 	})
 }
 

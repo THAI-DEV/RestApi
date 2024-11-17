@@ -6,8 +6,21 @@
     <title>Document</title>
   </head>
   <body>
+    <script>
+      onload = () => {
+        fetch("./api/info")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("lastDeploy").innerText =
+              "Last Deploy : " + data.lastDeploy;
+            document.getElementById("lastStart").innerText =
+              "Last Start : " + data.lastStart;
+          });
+      };
+    </script>
     <h1>RestApi</h1>
-    <h2>Last Build : 13/11/2024 22:37</h2>
+    <h2 id="lastDeploy">Last Deploy : 01/01/1900 00:00:00</h2>
+    <h2 id="lastStart">Last Start : 01/01/1900 00:00:00</h2>
     <a href="./api/info" target="_self">Info</a>
     <br />
     <a href="./api/ping" target="_self">Ping</a>
