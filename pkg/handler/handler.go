@@ -24,7 +24,7 @@ func Ping(c *gin.Context) {
 func Test(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": dechutil.RandomString(8, true, true, true, true),
-		"access":  util.CurrentDateTimeString(),
+		"access":  dechutil.TimeToStringDateTimeFull(dechutil.CurrentBkkTime()),
 		"key":     config.Key,
 	})
 }
@@ -37,7 +37,7 @@ func ReadData(c *gin.Context) {
 	str = str + "|" + dechutil.TimeToStringDateTimeFull(dechutil.CurrentBkkTime())
 	data = &str
 
-	result, err := util.ReadFile("data.txt")
+	result, err := util.ReadFile()
 	if err != nil {
 		str := err.Error()
 		responseError = &str
@@ -62,7 +62,7 @@ func WriteData(c *gin.Context) {
 	str = str + "|" + dechutil.TimeToStringDateTimeFull(dechutil.CurrentBkkTime())
 	data = &str
 
-	err := util.WriteFile("data.txt", []byte(*data))
+	err := util.WriteFile(str)
 	if err != nil {
 		str := err.Error()
 		responseError = &str

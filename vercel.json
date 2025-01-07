@@ -8,7 +8,7 @@
     ],
     "build": {
         "env": {
-            "GO_BUILD_FLAGS": "-ldflags '-s -w -X dechdev/pkg/config.BuildTime=2024-11-17_14:45:34'"
+            "GO_BUILD_FLAGS": "-ldflags '-s -w -X dechdev/pkg/config.BuildTime=2025-01-07_23:38:57'"
         }
     }
 }

@@ -1,27 +1,34 @@
 package util
 
 import (
-	"io"
+	"log"
 	"os"
-	"time"
 )
 
-func CurrentDateTimeString() string {
-	location := time.FixedZone("GMT+7", 7*3600)
-	currentTime := time.Now().In(location)
-	return currentTime.Format("2006-01-02 15:04:05")
-}
-
-func ReadFile(filename string) ([]byte, error) {
-	file, err := os.Open(filename)
+func ReadFile() (string, error) {
+	data, err := os.ReadFile("./output/data.txt")
 	if err != nil {
-		return nil, err
+		log.Printf("failed reading data from file: %s \n", err)
+		data = nil
 	}
-	defer file.Close()
 
-	return io.ReadAll(file)
+	log.Printf("File contents: %s", data)
+
+	dataStr := string(data)
+	return dataStr, err
 }
 
-func WriteFile(filename string, data []byte) error {
-	return os.WriteFile(filename, data, 0644)
+func WriteFile(data string) error {
+	// create output directory if not exists
+	if _, err := os.Stat("./output"); os.IsNotExist(err) {
+		os.Mkdir("./output", 0755)
+	}
+
+	err := os.WriteFile("./output/data.txt", []byte(data), 0644)
+	if err != nil {
+		log.Printf("failed writing data to file: %s \n", err)
+		return err
+	}
+
+	return nil
 }

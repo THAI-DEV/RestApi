@@ -1,10 +1,10 @@
 package config
 
 import (
-	"dechdev/pkg/util"
 	"log"
 	"os"
 
+	"github.com/THAI-DEV/dechutil"
 	"github.com/joho/godotenv"
 )
 
@@ -25,5 +25,5 @@ func readEnv() {
 
 	Key = os.Getenv("KEY")
 	Mode = os.Getenv("MODE")
-	StartTime = util.CurrentDateTimeString()
+	StartTime = dechutil.TimeToStringDateTimeFull(dechutil.CurrentBkkTime())
 }
