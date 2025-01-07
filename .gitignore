@@ -1,4 +1,6 @@
 .env
 .vercel
 
+.vscode
 *.exe
+data.txt

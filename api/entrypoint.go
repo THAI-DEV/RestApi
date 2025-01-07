@@ -20,6 +20,10 @@ func registerRouter(r *gin.RouterGroup) {
 	r.GET("/ping", handler.Ping)
 	r.GET("/info", handler.Info)
 	r.GET("/test", handler.Test)
+
+	r.GET("/data", handler.ReadData)
+	r.POST("/data", handler.WriteData)
+
 }
 
 func init() {

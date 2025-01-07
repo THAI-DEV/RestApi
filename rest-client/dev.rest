@@ -14,3 +14,10 @@ GET {{baseUrl}}/api/ping
 
 ###
 GET {{baseUrl}}/api/test
+
+
+###
+GET {{baseUrl}}/api/data
+
+###
+POST {{baseUrl}}/api/data
