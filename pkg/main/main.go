@@ -1,40 +1,66 @@
 package main
 
 import (
-	_ "dechdev/api"
+	// _ "dechdev/api"
+	"dechdev/pkg/config"
+	"dechdev/pkg/handler"
+	"fmt"
+	"log"
+	"net/http"
+	"strings"
+	"time"
+
+	"github.com/gin-gonic/gin"
+)
+
+var (
+	app *gin.Engine
 )
 
 func main() {
-	// exec()
-
-	// time.Sleep(10 * time.Hour)
+	exec()
 }
 
-// func exec() {
-// 	// Create a new gin instance
-// 	router := gin.Default()
+func registerRouter(r *gin.RouterGroup) {
+	r.GET("/ping", handler.Ping)
+	r.GET("/info", handler.Info)
+	r.GET("/test", handler.Test)
 
-// 	// Define a route
-// 	router.GET("/", func(c *gin.Context) {
-// 		c.JSON(200, gin.H{
-// 			"message": "Hello, World!",
-// 			"access":  time.Now().Format("2006-01-02 15:04:05"),
-// 			"key":     readEnv(),
-// 		})
-// 	})
+	r.GET("/data", handler.ReadData)
+	r.POST("/data", handler.WriteData)
+}
 
-// 	// Run the server
-// 	router.Run(":8080") // Default listens and serves on 0.0.0.0:8080
-// }
+func exec() {
+	fmt.Println("------------------------------------------------")
+	log.Println("--- Start API Server ---")
+	fmt.Println("------------------------------------------------")
 
-// func readEnv() string {
-// 	// Load .env file
-// 	err := godotenv.Load()
-// 	if err != nil {
-// 		log.Fatalf("Error loading .env file")
-// 	}
+	app = gin.Default()
 
-// 	key := os.Getenv("KEY")
-// 	return key
+	// Handling routing errors
+	app.NoRoute(func(c *gin.Context) {
+		sb := &strings.Builder{}
+		sb.WriteString("routing err: no route, try this:\n")
+		for _, v := range app.Routes() {
+			sb.WriteString(fmt.Sprintf("%s %s\n", v.Method, v.Path))
+		}
+		c.String(http.StatusBadRequest, sb.String())
+	})
 
-// }
+	r := app.Group("/api")
+
+	registerRouter(r)
+
+	srv := &http.Server{
+		Addr:         ":" + "4000",
+		Handler:      app,
+		ReadTimeout:  30 * time.Second,
+		WriteTimeout: 30 * time.Second,
+		// MaxHeaderBytes: 1 << 20,
+	}
+
+	if config.Mode == "dev" {
+		srv.ListenAndServe()
+	}
+
+}

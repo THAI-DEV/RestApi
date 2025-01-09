@@ -23,7 +23,6 @@ func registerRouter(r *gin.RouterGroup) {
 
 	r.GET("/data", handler.ReadData)
 	r.POST("/data", handler.WriteData)
-
 }
 
 func init() {
