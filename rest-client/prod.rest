@@ -21,3 +21,12 @@ GET {{baseUrl}}/api/data
 
 ###
 POST {{baseUrl}}/api/data
+
+###
+POST {{baseUrl}}/api/buy-product
+Content-Type: application/json
+
+{
+    "shoppingDate": "2025-05-02"
+}
+ 

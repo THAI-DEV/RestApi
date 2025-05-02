@@ -24,7 +24,7 @@ type ResultBuyProduct struct {
 	ProductId   string `json:"productId"`
 	ProductName string `json:"productName"`
 	IsBuy       bool   `json:"isBuy"`
-	Reason      string `json:"reason,omitempty"`
+	Reason      string `json:"reason"`
 }
 
 type ResultListBuyProduct []ResultBuyProduct

@@ -41,3 +41,27 @@ func DiffDay(date1, date2 *time.Time) int {
 	diff := date2.Sub(*date1)
 	return int(diff.Hours() / 24)
 }
+
+func ReadJsonFile(filePath string) ([]byte, error) {
+	data, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
+
+func ReadEnv(key string) string {
+	value, exists := os.LookupEnv(key)
+	if !exists {
+		return ""
+	}
+	return value
+}
+
+func DateStringToTime(dateTimeString string) *time.Time {
+	parsedTime, err := time.Parse("2006-01-02", dateTimeString)
+	if err != nil {
+		return nil
+	}
+	return &parsedTime
+}
