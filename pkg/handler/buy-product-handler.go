@@ -1,13 +1,11 @@
 package handler
 
 import (
-	"dechdev/pkg/config"
 	"dechdev/pkg/model"
 	"dechdev/pkg/rule"
 	"dechdev/pkg/util"
-	"encoding/json"
-	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -53,23 +51,84 @@ func BuyProduct(c *gin.Context) {
 }
 
 func initData() (productList model.ProductListType, err error) {
-	productList = model.ProductListType{}
-
-	// Read value from .env
-	dataJsonFile := config.DataJsonFile
-
-	// Read Data from JSON file
-	data, err := util.ReadJsonFile(dataJsonFile)
-	if err != nil {
-		return productList, err
-	}
-
-	err = json.Unmarshal(data, &productList)
-	if err != nil {
-		return productList, err
-	}
-
-	fmt.Println("Data loaded successfully")
-
+	productList = mockData()
 	return productList, nil
+}
+
+func mockData() []model.ProductType {
+	layout := time.RFC3339
+	const recordDateStr = "2025-01-19T00:00:00Z"
+	return model.ProductListType{
+		{
+			Id:               "1",
+			Name:             "Tissue Paper Small Size",
+			NumUnit:          24,
+			UnitName:         "roll",
+			MinimumUnit:      4,
+			RecordDate:       parseTime(layout, "2024-01-19T00:00:00Z"),
+			ExpireDate:       nil,
+			MinimumExpireDay: 0,
+			BuyFlag:          false,
+		},
+		{
+			Id:               "2",
+			Name:             "Tissue Paper Big Size",
+			NumUnit:          1,
+			UnitName:         "pcs",
+			MinimumUnit:      2,
+			RecordDate:       parseTime(layout, "2024-01-19T00:00:00Z"),
+			ExpireDate:       nil,
+			MinimumExpireDay: 0,
+			BuyFlag:          false,
+		},
+		{
+			Id:               "3",
+			Name:             "Fish Sauce",
+			NumUnit:          1,
+			UnitName:         "bottle",
+			RecordDate:       parseTime(layout, recordDateStr),
+			ExpireDate:       parseTime(layout, "2025-04-30T00:00:00Z"),
+			MinimumExpireDay: 30,
+			BuyFlag:          false,
+		},
+		{
+			Id:               "4",
+			Name:             "Tomato Sauce",
+			NumUnit:          1,
+			UnitName:         "bottle",
+			RecordDate:       parseTime(layout, recordDateStr),
+			ExpireDate:       parseTime(layout, "2025-12-15T00:00:00Z"),
+			MinimumExpireDay: 30,
+			BuyFlag:          false,
+		},
+		{
+			Id:               "5",
+			Name:             "Soy Sauce",
+			NumUnit:          1,
+			UnitName:         "bottle",
+			MinimumUnit:      0,
+			RecordDate:       parseTime(layout, "2025-01-19T00:00:00Z"),
+			ExpireDate:       parseTime(layout, "2025-12-15T00:00:00Z"),
+			MinimumExpireDay: 30,
+			BuyFlag:          true,
+		},
+		{
+			Id:               "6",
+			Name:             "Chili Sauce",
+			NumUnit:          1,
+			UnitName:         "bottle",
+			RecordDate:       parseTime(layout, recordDateStr),
+			ExpireDate:       parseTime(layout, "2025-04-25T00:00:00Z"),
+			MinimumExpireDay: 10,
+			BuyFlag:          false,
+		},
+	}
+}
+
+func parseTime(layout, value string) *time.Time {
+	t, err := time.Parse(layout, value)
+	if err != nil {
+		panic(err)
+	}
+	return &t
 }
