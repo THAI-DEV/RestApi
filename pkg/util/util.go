@@ -50,14 +50,6 @@ func ReadJsonFile(filePath string) ([]byte, error) {
 	return data, nil
 }
 
-func ReadEnv(key string) string {
-	value, exists := os.LookupEnv(key)
-	if !exists {
-		return ""
-	}
-	return value
-}
-
 func DateStringToTime(dateTimeString string) *time.Time {
 	parsedTime, err := time.Parse("2006-01-02", dateTimeString)
 	if err != nil {

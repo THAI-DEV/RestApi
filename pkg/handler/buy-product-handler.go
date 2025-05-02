@@ -1,16 +1,15 @@
 package handler
 
 import (
+	"dechdev/pkg/config"
 	"dechdev/pkg/model"
 	"dechdev/pkg/rule"
 	"dechdev/pkg/util"
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
 func BuyProduct(c *gin.Context) {
@@ -56,14 +55,8 @@ func BuyProduct(c *gin.Context) {
 func initData() (productList model.ProductListType, err error) {
 	productList = model.ProductListType{}
 
-	err = godotenv.Load()
-	if err != nil {
-		fmt.Println("Error loading .env file")
-		return productList, err
-	}
-
 	// Read value from .env
-	dataJsonFile := os.Getenv("DATA_PRODUCT_FILE_PATH")
+	dataJsonFile := config.DataJsonFile
 
 	// Read Data from JSON file
 	data, err := util.ReadJsonFile(dataJsonFile)
