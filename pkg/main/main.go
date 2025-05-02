@@ -28,6 +28,8 @@ func registerRouter(r *gin.RouterGroup) {
 
 	r.GET("/data", handler.ReadData)
 	r.POST("/data", handler.WriteData)
+
+	r.POST("/buy-product", handler.BuyProduct)
 }
 
 func exec() {

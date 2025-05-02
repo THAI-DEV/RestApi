@@ -2,6 +2,7 @@ package handler
 
 import (
 	"dechdev/pkg/config"
+	"dechdev/pkg/model"
 	"dechdev/pkg/util"
 	"net/http"
 	"strings"
@@ -73,5 +74,20 @@ func WriteData(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": data,
 		"error":   responseError,
+	})
+}
+
+func BuyProduct(c *gin.Context) {
+	var requestBody model.BuyProductRequestBody
+
+	err := c.ShouldBindJSON(&requestBody)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"message": requestBody.ShoppingDate,
+		"error":   nil,
 	})
 }

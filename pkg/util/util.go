@@ -3,6 +3,7 @@ package util
 import (
 	"log"
 	"os"
+	"time"
 )
 
 func ReadFile() (string, error) {
@@ -31,4 +32,12 @@ func WriteFile(data string) error {
 	}
 
 	return nil
+}
+
+func DiffDay(date1, date2 *time.Time) int {
+	if date1 == nil || date2 == nil {
+		return 0
+	}
+	diff := date2.Sub(*date1)
+	return int(diff.Hours() / 24)
 }
